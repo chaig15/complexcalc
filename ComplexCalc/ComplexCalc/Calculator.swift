@@ -66,6 +66,18 @@ class Calculator {
     func subtract(lhs: (Int, Int), rhs: (Int, Int)) -> (Int, Int) {
         return (lhs.0 - rhs.0, lhs.1 - rhs.1)
     }
+    
+    func mathOp(lhs: Int, rhs: Int, op: (Int, Int) -> Int) -> Int {
+        return op(lhs, rhs);
+    }
+    
+    func mathOp(args: [Int], beg: Int, op: (Int, Int) -> Int) -> Int {
+        var start: Int = op(beg, args[0]);
+        for (index, element) in args.enumerated() where index != 0 {
+            start = op(start, element)
+        }
+        return start;
+    }
 }
 
 
